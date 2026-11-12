@@ -6,6 +6,7 @@ import { About } from './sections/About';
 import { Contact } from './sections/Contact';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
+import { Background3D } from './components/Background3D';
 
 export default function App() {
   useEffect(() => {
@@ -30,25 +31,33 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-slate-950 overflow-x-hidden">
-      <Header />
-      <main>
-        <Hero />
-        
-        <div className="reveal-on-scroll">
-          <Services />
-        </div>
-        
-        <div className="reveal-on-scroll">
-          <About />
-        </div>
-        
-        <div className="reveal-on-scroll">
-          <Contact />
-        </div>
-      </main>
-      <Footer />
-      <WhatsAppButton />
+    <div className="min-h-screen bg-[#051222] text-slate-100 font-sans antialiased selection:bg-[#D4AF37] selection:text-[#051222] overflow-x-hidden relative">
+      
+      {/* Fundo de Partículas e Linhas Douradas Conectadas 3D */}
+      <Background3D />
+
+      {/* Conteúdo Principal do Site */}
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          
+          <div className="reveal-on-scroll">
+            <Services />
+          </div>
+          
+          <div className="reveal-on-scroll">
+            <About />
+          </div>
+          
+          <div className="reveal-on-scroll">
+            <Contact />
+          </div>
+        </main>
+        <Footer />
+        <WhatsAppButton />
+      </div>
+
     </div>
   );
 }

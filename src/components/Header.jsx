@@ -24,6 +24,12 @@ export function Header() {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
+  // Número e mensagem dinâmica puxados do lawyerData
+  const phoneNumber = lawyerData?.whatsapp || '5589981433161';
+  const professionalName = lawyerData?.name || 'Escritório de Advocacia';
+  const whatsappMessage = encodeURIComponent(`Olá, ${professionalName}! Preciso de consultoria jurídica.`);
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       isScrolled 
@@ -36,7 +42,7 @@ export function Header() {
         <a href="#" className="flex items-center group py-2 pl-2 sm:pl-0">
           <img 
             src={logoImg} 
-            alt="Elson Aguiar Advocacia & Consultoria Jurídica" 
+            alt="Escritório de Advocacia & Consultoria Jurídica" 
             className="h-12 sm:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]" 
           />
         </a>
@@ -64,7 +70,7 @@ export function Header() {
         {/* CTA Button (Desktop) com o WhatsApp Oficial */}
         <div className="hidden md:block">
           <a
-            href={`https://wa.me/${lawyerData?.whatsapp || '5589981059793'}?text=Olá,%20Dr.%20Elson!%20Preciso%20de%20consultoria%20jurídica.`}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#B8860B] hover:from-[#D4AF37] hover:to-[#C5A059] text-[#07182D] font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-[#D4AF37]/20 hover:shadow-[#D4AF37]/40 text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 border border-[#F3E5AB]/40"
@@ -123,7 +129,7 @@ export function Header() {
 
           <div className="pt-4">
             <a
-              href={`https://wa.me/${lawyerData?.whatsapp || '5589981059793'}?text=Olá,%20Dr.%20Elson!%20Preciso%20de%20consultoria%20jurídica.`}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
@@ -140,3 +146,5 @@ export function Header() {
     </header>
   );
 }
+
+export default Header;

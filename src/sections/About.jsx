@@ -1,99 +1,163 @@
+import { motion } from 'framer-motion';
 import { lawyerData } from '../data/data';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
-
-
+import { Card3DTilt } from '../components/Card3DTilt';
+import { Award, Sparkles, Code2, Cpu, Zap, ShieldCheck } from 'lucide-react';
 export function About() {
   return (
-    <section id="sobre" className="py-20 lg:py-32 bg-[#07182D] relative overflow-hidden">
+    <section id="sobre" className="py-28 relative overflow-hidden bg-[#051222]">
       
-      {/* Linha decorativa subtil no topo */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/40 to-transparent" />
+      {/* Linha Divisória Dourada com Brilho no Topo da Secção */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C5A059] to-transparent opacity-60 shadow-[0_0_15px_rgba(197,160,89,0.8)]" />
+
+      {/* Efeito de Fundo: Brilhos e Gradientes de Profundidade */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+        <div className="absolute top-1/3 right-1/4 w-[400px] sm:w-[700px] h-[400px] sm:h-[700px] bg-[#C5A059]/20 rounded-full blur-[140px] animate-pulse" />
+        <div className="absolute bottom-1/3 left-1/4 w-[400px] sm:w-[700px] h-[400px] sm:h-[700px] bg-[#1E3A8A]/30 rounded-full blur-[160px] animate-pulse duration-1000" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* Cabeçalho da Secção */}
+        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/30 text-[#D4AF37] text-xs sm:text-sm font-semibold uppercase tracking-widest backdrop-blur-md shadow-lg"
+          >
+            <Sparkles size={14} className="animate-spin" />
+            Sobre o Escritório & Arquitetura
+          </motion.div>
           
-          {/* 1. TEXTO PRIMEIRO NO HTML: No telemóvel aparece em cima, no PC vai para a direita */}
-          <div className="lg:col-span-7 lg:col-start-6 space-y-6 text-left">
-            
-            <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#C5A059] bg-[#C5A059]/10 py-1.5 px-4 rounded-full border border-[#C5A059]/20 inline-block">
-              Sobre o Escritório
-            </span>
-            
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-100 tracking-tight font-serif leading-tight">
-              Compromisso e dedicação com <span className="bg-gradient-to-r from-[#C5A059] via-[#F3E5AB] to-[#D4AF37] bg-clip-text text-transparent italic">quem mais precisa</span>
-            </h2>
-            
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
-              Com atuação focada em <strong className="text-slate-100 font-semibold">{lawyerData.city}</strong> e toda a região, o escritório do <strong className="text-slate-100 font-semibold">{lawyerData.name}</strong> nasceu com a missão de defender os direitos dos segurados do INSS com total seriedade, ética e rigor técnico.
-            </p>
-            
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
-              Sabemos o quanto a burocracia previdenciária pode ser exaustiva e desgastante. Por isso, oferecemos um atendimento próximo, humanizado e transparente, acompanhando cada etapa do seu processo de forma personalizada.
-            </p>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">
+            Excelência, Ética e <span className="bg-gradient-to-r from-[#C5A059] via-[#F3E5AB] to-[#D4AF37] bg-clip-text text-transparent font-serif italic">Inovação Digital</span>
+          </h2>
+          
+          <p className="text-slate-300 text-base sm:text-lg">
+            A união perfeita entre a tradição jurídica de alto padrão e a engenharia front-end mais avançada do mercado.
+          </p>
+        </div>
 
-            {/* Lista de Diferenciais com Ícones Dourados */}
-            <div className="pt-2 space-y-3.5">
-              <div className="flex items-center gap-3 text-slate-200 text-sm sm:text-base">
-                <div className="w-6 h-6 rounded-full bg-[#C5A059]/10 flex items-center justify-center border border-[#C5A059]/30 shrink-0 shadow-inner">
-                  <CheckCircle2 size={16} className="text-[#D4AF37]" />
+        {/* Grelha Principal: Selo CE (Desenvolvedor) + Biografia & Destaque */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          {/* Coluna da Esquerda: Emblema com as Iniciais CE (Carlos Emanuel) com Efeito Premium */}
+          <div className="lg:col-span-5">
+            <Card3DTilt className="w-full">
+              <div className="relative bg-gradient-to-b from-[#081B33] via-[#061428] to-[#040E1B] border-2 border-[#C5A059]/60 rounded-3xl p-8 sm:p-12 shadow-[0_25px_60px_rgba(5,18,34,0.9)] backdrop-blur-2xl text-center overflow-hidden group">
+                
+                {/* Efeito de brilho flutuante no fundo do card */}
+                <div className="absolute -top-24 -right-24 w-60 h-60 bg-gradient-to-br from-[#C5A059]/25 to-transparent rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+
+                <div className="relative z-10 flex flex-col items-center space-y-6">
+                  
+                  {/* Círculo com as Iniciais CE em Destaque */}
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-[#C5A059]/30 via-[#081B33] to-[#051222] border-2 border-[#C5A059] flex items-center justify-center shadow-[0_0_35px_rgba(197,160,89,0.35)] relative group-hover:scale-105 transition-transform duration-500">
+                    <span className="text-4xl sm:text-5xl font-serif font-extrabold bg-gradient-to-r from-[#F3E5AB] via-[#D4AF37] to-[#C5A059] bg-clip-text text-transparent tracking-widest drop-shadow-md">
+                      CE
+                    </span>
+                    <div className="absolute inset-0 rounded-full border border-dashed border-[#C5A059]/50 animate-spin" style={{ animationDuration: '25s' }} />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <h3 className="text-xl font-serif font-bold text-slate-100 tracking-wide">
+                      Carlos Emanuel
+                    </h3>
+                    <p className="text-xs font-mono uppercase tracking-widest text-[#D4AF37]">
+                      Lead Front-End Developer
+                    </p>
+                  </div>
+
+                  {/* Tech stack badge mini */}
+                  <div className="flex flex-wrap justify-center gap-2 pt-2">
+                    <span className="px-2.5 py-1 rounded-lg bg-[#051222] border border-[#C5A059]/30 text-[10px] font-mono text-slate-300">React</span>
+                    <span className="px-2.5 py-1 rounded-lg bg-[#051222] border border-[#C5A059]/30 text-[10px] font-mono text-slate-300">Tailwind</span>
+                    <span className="px-2.5 py-1 rounded-lg bg-[#051222] border border-[#C5A059]/30 text-[10px] font-mono text-slate-300">3D Tilt</span>
+                  </div>
+
+                  <div className="w-full pt-4 border-t border-[#C5A059]/20">
+                    <span className="text-[11px] text-slate-400 italic">
+                      [ Arquitetura Web de Alta Performance ]
+                    </span>
+                  </div>
+
                 </div>
-                <span>Atendimento humanizado, presencial e 100% online</span>
               </div>
-
-              <div className="flex items-center gap-3 text-slate-200 text-sm sm:text-base">
-                <div className="w-6 h-6 rounded-full bg-[#C5A059]/10 flex items-center justify-center border border-[#C5A059]/30 shrink-0 shadow-inner">
-                  <CheckCircle2 size={16} className="text-[#D4AF37]" />
-                </div>
-                <span>Análise minuciosa de documentos e histórico do INSS</span>
-              </div>
-
-              <div className="flex items-center gap-3 text-slate-200 text-sm sm:text-base">
-                <div className="w-6 h-6 rounded-full bg-[#C5A059]/10 flex items-center justify-center border border-[#C5A059]/30 shrink-0 shadow-inner">
-                  <CheckCircle2 size={16} className="text-[#D4AF37]" />
-                </div>
-                <span>Acompanhamento estratégico do início ao fim do pedido</span>
-              </div>
-            </div>
-
-            {/* Botão de Ação Destacado */}
-            <div className="pt-4">
-              <a
-                href={`https://wa.me/${lawyerData?.whatsapp || ''}?text=Olá,%20Dr.%20Elson!%20Li%20sobre%20o%20escritório%20e%20gostaria%20de%20conversar%20sobre%20o%20meu%20caso.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#C5A059] hover:bg-[#D4AF37] text-[#07182D] font-bold px-8 py-4 rounded-xl shadow-xl shadow-[#C5A059]/20 text-base transition-all duration-300 hover:scale-[1.02] active:scale-95 group/btn"
-              >
-                <span>Falar Diretamente com o Dr. Elson</span>
-                <ArrowRight size={18} className="group-hover/btn:translate-x-1.5 transition-transform stroke-[2.5]" />
-              </a>
-            </div>
-
+            </Card3DTilt>
           </div>
 
-          {/* 2. FOTO SEGUNDA NO HTML: No telemóvel fica abaixo do texto, no PC vai para a esquerda */}
-          <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 flex justify-center">
-            <div className="relative group w-full max-w-sm sm:max-w-md">
-              
-              {/* Glow dourado de fundo */}
-              <div className="absolute -inset-1 bg-gradient-to-tr from-[#C5A059]/30 to-[#D4AF37]/10 rounded-3xl blur-2xl opacity-40 group-hover:opacity-75 transition duration-700" />
-
-              {/* Moldura de Luxo */}
-              <div className="relative rounded-2xl overflow-hidden border border-[#C5A059]/30 hover:border-[#C5A059]/60 transition-all duration-500 shadow-2xl bg-[#051222]/90 backdrop-blur-sm">
-                <img 
-                  src={lawyerData.aboutImage} 
-                  alt={lawyerData.name}
-                  className="w-full h-[420px] sm:h-[500px] object-cover object-top group-hover:scale-105 transition-transform duration-700 filter contrast-[1.03]"
-                />
+          {/* Coluna da Direita: Biografia do Escritório & Detalhes (7 Colunas) */}
+          <div className="lg:col-span-7 space-y-6">
+            
+            <Card3DTilt className="w-full">
+              <div className="relative bg-[#081B33]/95 border-2 border-[#C5A059]/60 rounded-3xl p-8 sm:p-10 shadow-[0_25px_60px_rgba(5,18,34,0.9)] backdrop-blur-2xl overflow-hidden group">
                 
-                {/* Degradê na base com o Nome */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#07182D] via-[#07182D]/90 to-transparent p-6 pt-16 text-center">
-                  <h3 className="text-2xl font-bold font-serif text-slate-100 tracking-wide">{lawyerData.name}</h3>
-                  <div className="w-10 h-[2px] bg-[#C5A059] mx-auto mt-2 opacity-80" />
+                {/* Brilho interno subtil */}
+                <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-[#C5A059]/15 to-transparent rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+
+                <div className="relative z-10 space-y-6">
+                  
+                  {/* Badge de Destaque do Projeto */}
+                  <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#C5A059]/25 to-[#D4AF37]/10 border border-[#C5A059]/50 text-[#F3E5AB] text-xs font-mono tracking-wider shadow-lg">
+                    <Code2 size={16} className="text-[#D4AF37]" />
+                    <span>Engenharia & Código por <strong className="text-white font-bold">Carlos Emanuel</strong></span>
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-bold font-serif text-slate-100 leading-snug">
+                    {lawyerData.about?.title}
+                  </h3>
+
+                  <p className="text-slate-300 text-base leading-relaxed font-light">
+                    {lawyerData.about?.description}
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-[#C5A059]/20">
+                    <div className="flex items-center gap-3 text-slate-200 text-sm font-medium">
+                      <div className="w-8 h-8 rounded-lg bg-[#C5A059]/20 flex items-center justify-center text-[#D4AF37] border border-[#C5A059]/40">
+                        <Zap size={18} />
+                      </div>
+                      <span>Alta Performance & Velocidade</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-slate-200 text-sm font-medium">
+                      <div className="w-8 h-8 rounded-lg bg-[#C5A059]/20 flex items-center justify-center text-[#D4AF37] border border-[#C5A059]/40">
+                        <ShieldCheck size={18} />
+                      </div>
+                      <span>Segurança & Rigor Técnico</span>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            </Card3DTilt>
+
+            {/* Caixas menores de diferenciais técnicos com efeitos melhorados */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              
+              <div className="bg-[#081B33]/90 border border-[#C5A059]/40 hover:border-[#C5A059]/80 rounded-2xl p-5 backdrop-blur-xl shadow-xl transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C5A059]/30 to-[#051222] border border-[#C5A059]/50 flex items-center justify-center text-[#D4AF37] group-hover:rotate-6 transition-transform">
+                    <Award size={20} />
+                  </div>
+                  <h4 className="text-base font-bold text-slate-100">Design Exclusivo</h4>
+                </div>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  Interface moderna e sofisticada focada em conversão e impacto visual.
+                </p>
+              </div>
+
+              <div className="bg-[#081B33]/90 border border-[#C5A059]/40 hover:border-[#C5A059]/80 rounded-2xl p-5 backdrop-blur-xl shadow-xl transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C5A059]/30 to-[#051222] border border-[#C5A059]/50 flex items-center justify-center text-[#D4AF37] group-hover:rotate-6 transition-transform">
+                    <Cpu size={20} />
+                  </div>
+                  <h4 className="text-base font-bold text-slate-100">100% Responsivo</h4>
+                </div>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  Fluidez perfeita em telemóveis, tablets, portáteis e ecrãs 4K.
+                </p>
               </div>
 
             </div>
+
           </div>
 
         </div>
@@ -102,3 +166,5 @@ export function About() {
     </section>
   );
 }
+
+export default About;
